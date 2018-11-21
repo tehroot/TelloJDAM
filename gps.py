@@ -6,5 +6,4 @@ with serial.Serial('/dev/ttyS1', baudrate=9600, timeout=1) as ser:
     for i in range(10):
         line = ser.readline().decode('ascii', errors='replace')
         msg = pynmea2.parse(line.strip())
-        print(line.strip())
         print(msg)
