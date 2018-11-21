@@ -8,5 +8,5 @@ while(response != "Received"):
     ser.cancel_read()
     msg = pynmea2.parse(response)
     print(msg)
-    print(response)
+    print(response.strip())
 
