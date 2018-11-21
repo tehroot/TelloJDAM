@@ -7,5 +7,6 @@ while(response != "Received"):
     response = ser.readline().decode('ascii', errors='replace')
     ser.cancel_read()
     msg = pynmea2.parse(response)
+    print(msg)
     print(response)
 
