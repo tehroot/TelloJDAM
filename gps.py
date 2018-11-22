@@ -27,8 +27,6 @@ def get_gps(line):
                 print("...awaiting gps fix")
     except KeyboardInterrupt:
         sys.stderr.write("Keyboard Interrupt")
-    except Exception as e:
-        sys.stderr.write("Generalized error:" % type(e).__name__, e)
 
 
 def main():
