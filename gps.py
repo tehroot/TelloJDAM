@@ -1,7 +1,12 @@
 import serial
 import pynmea2
 import sys
-import time
+import signal
+
+
+def signal_handler(signal, frame):
+    print("\nprogram exiting gracefully")
+    sys.exit(0)
 
 
 def connect_serial():
@@ -34,9 +39,8 @@ def main():
     line = True
     while line:
         try:
-
             message = connect_serial()
             get_gps(message)
         except KeyboardInterrupt:
             sys.stderr.write('Ctrl-C KeyboardInterrupt')
-            line = False
+            signal.signal(signal.SIGINT, signal_handler)
