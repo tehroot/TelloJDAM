@@ -7,8 +7,7 @@ with serial.Serial('/dev/ttyS1', baudrate=9600, timeout=1) as ser:
         line = ser.readline().decode('ascii', errors='replace')
         msg = pynmea2.parse(line)
         if msg.sentence_type == 'GGA':
-            print()
-            print()
-        if msg.sentence_type == 'RMC' and msg.status == 'A':
-            print(msg.latitude)
             print(msg.longitude)
+            print(msg.latitude)
+            print(msg.gps_qual)
+            print(msg.num_sats)
