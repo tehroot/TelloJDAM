@@ -31,8 +31,7 @@ def get_gps(line):
 
 def main():
     try:
-        loop = True
-        while loop:
+        while True:
             message = connect_serial()
             get_gps(message)
     except KeyboardInterrupt:
