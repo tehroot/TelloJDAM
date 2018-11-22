@@ -8,6 +8,7 @@ def connect_serial():
         while True:
             with serial.Serial('/dev/ttyS1', baudrate=9600, timeout=1) as ser:
                 line = ser.readline().decode('ascii', errors='replace')
+                print(line)
                 return line
     except Exception as e:
         sys.stderr.write("Error connecting to UART" % type(e).__name__, e)
