@@ -7,7 +7,7 @@ def connect_serial():
     while True:
         try:
             with serial.Serial('/dev/ttyS1', baudrate=9600, timeout=1) as ser:
-                line = ser.readline().decode('ascii', errors='replace')
+                line = ser.readline()
                 return line
         except Exception as e:
             sys.stderr.write("Error connecting to UART" % type(e).__name__, e)
@@ -37,6 +37,6 @@ def main():
         while True:
             message = connect_serial()
             get_gps(message)
-            time.sleep(.1)
+            time.sleep(1)
     except KeyboardInterrupt:
         sys.stderr.write('Ctrl-C KeyboardInterrupt')
