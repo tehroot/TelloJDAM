@@ -36,6 +36,11 @@ def get_gps(line):
         sys.stderr.write('Error parsing %s: %s\n' % (type(e).__name__, e))
 
 
+def create_track():
+
+
+
+
 def main():
     while True:
         try:
