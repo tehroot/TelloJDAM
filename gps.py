@@ -9,6 +9,6 @@ with serial.Serial('/dev/ttyS1', baudrate=9600, timeout=1) as ser:
         if msg.sentence_type == 'GGA':
             print()
             print()
-        if msg.sentence_type == 'RMC' and msg.fields.__contains__(msg.status == 'A'):
+        if msg.sentence_type == 'RMC' and msg.status == 'A':
             print(msg.latitude)
             print(msg.longitude)
