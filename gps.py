@@ -16,7 +16,7 @@ def connect_serial():
 
 
 def get_gps(line):
-    while True:
+    while line:
         msg = pynmea2.parse(line)
         print(msg)
         if msg.sentence_type == 'GGA' and msg.gps_qual == 1:
