@@ -30,9 +30,13 @@ def get_gps(line):
 
 
 def main():
-
-    message = connect_serial()
-    get_gps(message)
+    try:
+        loop = True
+        while loop:
+            message = connect_serial()
+            get_gps(message)
+    except KeyboardInterrupt:
+        sys.stderr.write('Ctrl-C KeyboardInterrupt')
 
 
 if __name__ == '__main__':
