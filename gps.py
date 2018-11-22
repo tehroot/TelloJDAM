@@ -29,3 +29,7 @@ def get_gps(line):
 def main():
     message = connect_serial()
     get_gps(message)
+
+
+if __name__ == '__main__':
+    main()
