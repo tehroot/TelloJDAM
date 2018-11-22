@@ -17,7 +17,7 @@ def connect_serial():
     except Exception as e:
         sys.stderr.write("Error connecting to UART" % type(e).__name__, e)
     except KeyboardInterrupt as e:
-        sys.stderr.write("Keyboard Interrupt")
+        sys.stderr.write("Keyboard Interrupt1")
         signal.signal(signal.SIGINT, signal_handler)
 
 
@@ -31,7 +31,7 @@ def get_gps(line):
         elif msg.sentence_type == 'GGA' and msg.gps_qual == 0:
             print("...awaiting gps fix")
     except KeyboardInterrupt:
-        sys.stderr.write("Keyboard Interrupt")
+        sys.stderr.write("Keyboard Interrupt2")
         signal.signal(signal.SIGINT, signal_handler)
     except Exception as e:
         sys.stderr.write('Error parsing %s: %s\n' % (type(e).__name__, e))
