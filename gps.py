@@ -4,15 +4,15 @@ import sys
 
 
 def connect_serial():
-    try:
-        while True:
+    while True:
+        try:
             with serial.Serial('/dev/ttyS1', baudrate=9600, timeout=1) as ser:
                 line = ser.readline().decode('ascii', errors='replace')
                 return line
-    except Exception as e:
-        sys.stderr.write("Error connecting to UART" % type(e).__name__, e)
-    except KeyboardInterrupt as e:
-        sys.stderr.write("Keyboard Interrupt")
+        except Exception as e:
+            sys.stderr.write("Error connecting to UART" % type(e).__name__, e)
+        except KeyboardInterrupt as e:
+            sys.stderr.write("Keyboard Interrupt")
 
 
 def get_gps(line):
