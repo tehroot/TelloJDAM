@@ -16,8 +16,9 @@ def connect_serial():
 
 
 def get_gps(line):
-    try:
-        while line:
+
+    while line:
+        try:
             msg = pynmea2.parse(line)
             if msg.sentence_type == 'GGA' and msg.gps_qual == 1:
                 print(msg.longitude)
@@ -25,8 +26,10 @@ def get_gps(line):
                 line = ''
             elif msg.sentence_type == 'GGA' and msg.gps_qual == 0:
                 print("...awaiting gps fix")
-    except KeyboardInterrupt:
-        sys.stderr.write("Keyboard Interrupt")
+        except KeyboardInterrupt:
+            sys.stderr.write("Keyboard Interrupt")
+        except Exception as e:
+            sys.stderr.write('Error reading serial port %s: %s\n' % (type(e).__name__, e))
 
 
 def main():
