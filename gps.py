@@ -36,7 +36,3 @@ def main():
             get_gps(message)
     except KeyboardInterrupt:
         sys.stderr.write('Ctrl-C KeyboardInterrupt')
-
-
-if __name__ == '__main__':
-    main()
