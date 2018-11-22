@@ -16,18 +16,23 @@ def connect_serial():
 
 
 def get_gps(line):
-    while line:
-        msg = pynmea2.parse(line)
-        print(msg)
-        if msg.sentence_type == 'GGA' and msg.gps_qual == 1:
-            print(msg.longitude)
-            print(msg.latitude)
-            line = ''
-        elif msg.sentence_type == 'GGA' and msg.gps_qual == 0:
-            print("...awaiting gps fix")
+    try:
+        while line:
+            msg = pynmea2.parse(line)
+            if msg.sentence_type == 'GGA' and msg.gps_qual == 1:
+                print(msg.longitude)
+                print(msg.latitude)
+                line = ''
+            elif msg.sentence_type == 'GGA' and msg.gps_qual == 0:
+                print("...awaiting gps fix")
+    except Exception as e:
+        sys.stderr.write("Keyboard Interrupt")
+    except Exception as e:
+        sys.stderr.write("Generalized error:" % type(e).__name__, e)
 
 
 def main():
+
     message = connect_serial()
     get_gps(message)
 
