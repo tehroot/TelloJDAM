@@ -16,7 +16,7 @@ def connect_serial():
             return line
     except Exception as e:
         sys.stderr.write("Error connecting to UART" % type(e).__name__, e)
-    except KeyboardInterrupt as e:
+    except KeyboardInterrupt:
         sys.stderr.write("Keyboard Interrupt1")
         signal.signal(signal.SIGINT, signal_handler)
 
