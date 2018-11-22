@@ -27,7 +27,6 @@ def get_gps(line):
         if msg.sentence_type == 'GGA' and msg.gps_qual == 1:
             print(msg.longitude)
             print(msg.latitude)
-            line = ''
         elif msg.sentence_type == 'GGA' and msg.gps_qual == 0:
             print("...awaiting gps fix")
     except KeyboardInterrupt:
