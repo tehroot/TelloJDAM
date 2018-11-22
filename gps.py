@@ -14,14 +14,17 @@ def connect_serial():
     except KeyboardInterrupt as e:
         sys.stderr.write("Keyboard Interrupt")
 
+
 def get_gps(line):
     while True:
         msg = pynmea2.parse(line)
+        print(msg)
         if msg.sentence_type == 'GGA' and msg.gps_qual == 1:
             print(msg.longitude)
             print(msg.latitude)
         elif msg.sentence_type == 'GGA' and msg.gps_qual == 0:
             print("...awaiting gps fix")
+
 
 def main():
     message = connect_serial()
