@@ -35,6 +35,5 @@ def main():
         while True:
             message = connect_serial()
             get_gps(message)
-            time.sleep(1)
     except KeyboardInterrupt:
         sys.stderr.write('Ctrl-C KeyboardInterrupt')
