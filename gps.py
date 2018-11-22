@@ -6,8 +6,6 @@ with serial.Serial('/dev/ttyS1', baudrate=9600, timeout=1) as ser:
     while(response != "finished"):
         line = ser.readline().decode('ascii', errors='replace')
         msg = pynmea2.parse(line)
-        if msg.sentence_type == 'GGA':
+        if msg.sentence_type == 'GGA' and msg.gps_qual == 1:
             print(msg.longitude)
             print(msg.latitude)
-            print(msg.gps_qual)
-            print(msg.num_sats)
