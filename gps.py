@@ -32,8 +32,8 @@ def get_gps(line):
     except KeyboardInterrupt:
         sys.stderr.write("Keyboard Interrupt2")
         signal.signal(signal.SIGINT, signal_handler)
-    except Exception as e:
-        sys.stderr.write('Error parsing %s: %s\n' % (type(e).__name__, e))
+    #except Exception as e:
+    #    sys.stderr.write('Error parsing %s: %s\n' % (type(e).__name__, e))
 
 
 def main():
